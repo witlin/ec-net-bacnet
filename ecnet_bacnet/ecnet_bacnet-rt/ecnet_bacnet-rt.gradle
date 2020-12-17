@@ -1,0 +1,72 @@
+import java.nio.file.Paths
+
+/* Module Build File */
+
+description     = ""
+ext {
+}
+niagaraModule {
+  moduleName = "ecnet_bacnet"
+  preferredSymbol = "bnet"
+  runtimeProfile = "rt"
+  certAlias = niagara_cert_alias
+
+  modulePart {
+      name = "ecnet_bacnet-wb"
+      runtimeProfile = "wb"
+  }
+}
+
+dependencies {
+  compile "Tridium:nre:4.9"
+  compile "Tridium:baja:4.9"
+  compile "Tridium:bacnet-rt:4.9"
+  compile "Tridium:bacnetUtil-rt:4.9"
+  compile "Tridium:control-rt:4.9"
+  compile "Tridium:devDriver-rt:4.9"
+  compile "Tridium:driver-rt:4.9"
+}
+
+jar{
+  from("src"){
+
+  }doLast {
+//    apply from : "${rootDir}/gradle/keymgmt.gradle"
+//    apply from : "${rootDir}/gradle/exportCert.gradle"
+    apply from : "${rootDir}/gradle/signJar.gradle"
+    tasks.withType(Exec) { Exec task ->
+      task.execute()
+    }
+  }
+}
+
+moduleTestJar {
+  from('srcTest') {
+  }
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+//def pass = niagara_pass
+//def certDir = "${System.getProperty("user.home")}${niagara_cert_mgmt}"
+//def store = niagara_cert_store
+//def alias = niagara_cert_alias
+//def n4JreDir = niagara_jre
+//def jarDir = niagara_modules
+////def jarName = project.name.substring(0, project.name.length() - 3)
+//def jarName = project.name
+//
+//println jarDir.concat('\\'+jarName+'.jar')
+//
+//task genKey(type:Exec){
+//  workingDir niagara_jre
+//  commandLine 'keytool',
+//          '-genkey',
+//          '-alias', alias ,
+//          '-keyAlg', 'RSA',
+//          '-ext', 'EKU=\"codeSigning\"',
+//          '-validity', '600',
+//          '-keypass', pass,
+//          '-storepass', pass,
+//          '-keystore', Paths.get(certDir, store),
+//          '-dname', 'CN=Victor Smolinski, OU=Development, O=DCES BI, L=West_Bloomfield, ST=Michigan, C=US'
+//}

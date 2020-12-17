@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module name="ecnet_bacnet-rt" bajaVersion="0" vendor="DCES" vendorVersion="1.0" description="" preferredSymbol="bnet" nre="true" autoload="true" installable="true" buildMillis="1608195432906" buildHost="BRO-LAP-191" moduleName="ecnet_bacnet" runtimeProfile="rt">
+ <dependencies>
+  <dependency name="baja" vendor="Tridium" vendorVersion="4.9"/>
+  <dependency name="control-rt" vendor="Tridium" vendorVersion="4.9"/>
+  <dependency name="driver-rt" vendor="Tridium" vendorVersion="4.9"/>
+  <dependency name="bacnet-rt" vendor="Tridium" vendorVersion="4.9"/>
+  <dependency name="devDriver-rt" vendor="Tridium" vendorVersion="4.9"/>
+  <dependency name="bacnetUtil-rt" vendor="Tridium" vendorVersion="4.9"/>
+ </dependencies>
+ <dirs/>
+ <types/>
+ <permissions>
+  <niagara-permission-groups type="all"/>
+  <niagara-permission-groups type="workbench"/>
+  <niagara-permission-groups type="station"/>
+ </permissions>
+ <moduleParts>
+  <modulePart name="ecnet_bacnet-wb" runtimeProfile="wb"/>
+ </moduleParts>
+</module>

@@ -1,0 +1,14 @@
+import java.nio.file.Paths
+
+def certDir = "${System.getProperty("user.home")}${niagara_cert_mgmt}"
+def jarDir = niagara_modules
+def jarName = project.name
+
+task signJar(type:Exec){
+    println "SIGNING-JAR..."
+    commandLine 'jarsigner',
+            '-keystore', Paths.get(certDir, niagara_cert_store),
+            '-storepass', niagara_pass,
+            jarDir.concat('\\'+jarName+'.jar'),
+            niagara_cert_alias
+}

@@ -1,0 +1,29 @@
+/* Module Build File */
+
+description     = ""
+ext {
+}
+niagaraModule {
+  moduleName = "ecnet_bacnet"
+  preferredSymbol = "bnet"
+  runtimeProfile = "wb"
+}
+
+dependencies {
+  compile "Tridium:nre:4.9"
+  compile "Tridium:baja:4.9"
+  compile "Tridium:bacnet-rt:4.9"
+  compile "Tridium:bacnet-wb:4.9"
+  compile "Tridium:bacnetUtil-rt:4.9"
+  compile "Tridium:control-rt:4.9"
+  compile "Tridium:devDriver-rt:4.9"
+  compile "Tridium:devDriver-wb:4.9"
+  compile "Tridium:driver-rt:4.9"
+  compile "Tridium:driver-wb:4.9"
+  compile project(":ecnet_bacnet-rt")
+}
+
+moduleTestJar {
+  from('srcTest') {
+  }
+}
